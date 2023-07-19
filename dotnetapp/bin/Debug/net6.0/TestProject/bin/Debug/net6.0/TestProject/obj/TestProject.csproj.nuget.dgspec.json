@@ -1,9 +1,88 @@
 {
   "format": 1,
   "restore": {
-    "/home/coder/project/workspace/dotnetapp/dotnetapp.csproj": {}
+    "/home/coder/project/workspace/dotnetapp/TestProject/TestProject.csproj": {}
   },
   "projects": {
+    "/home/coder/project/workspace/dotnetapp/TestProject/TestProject.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/coder/project/workspace/dotnetapp/TestProject/TestProject.csproj",
+        "projectName": "TestProject",
+        "projectPath": "/home/coder/project/workspace/dotnetapp/TestProject/TestProject.csproj",
+        "packagesPath": "/home/coder/.nuget/packages/",
+        "outputPath": "/home/coder/project/workspace/dotnetapp/TestProject/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/coder/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/home/coder/project/workspace/dotnetapp/dotnetapp.csproj": {
+                "projectPath": "/home/coder/project/workspace/dotnetapp/dotnetapp.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.1.0, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.13.3, )"
+            },
+            "NUnit.Analyzers": {
+              "target": "Package",
+              "version": "[3.3.0, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[4.2.1, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.408/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "/home/coder/project/workspace/dotnetapp/dotnetapp.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -38,9 +117,13 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Cors": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
               "target": "Package",
-              "version": "[5.0.0, )"
+              "version": "[5.0.1, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -75,10 +158,6 @@
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.5, )"
-            },
-            "microsoft.AspNetCore.Cors": {
-              "target": "Package",
-              "version": "[2.2.0, )"
             }
           },
           "imports": [
