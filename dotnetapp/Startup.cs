@@ -54,12 +54,23 @@ namespace dotnetapp
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+<<<<<<< HEAD
             if (env.IsDevelopment())
+=======
+            if (env.IsDevelopment() || env.IsProduction())
+>>>>>>> b415973dc5008aa69eaf36b62e9f0f8e7eec4024
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "dotnetapp v1"));
             }
+<<<<<<< HEAD
+=======
+            else
+            {
+                app.UseHsts();
+            }
+>>>>>>> b415973dc5008aa69eaf36b62e9f0f8e7eec4024
 
             app.UseHttpsRedirection();
 

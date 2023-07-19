@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "pD7t/FkYxuMRckubp9ARzulJ/PKK2mwL51o5opF4rK49mZ4HNwy3+KUISE6Zz/emYhKxjL0t7WfBGtE13WyisA==",
+  "dgSpecHash": "ot0eIyUN2NAMY0gMR9XBAAJZU4kEEUtcJ7LrWWJI0P4nz+4q/QjOZjATJXq46asws0WiQOWi1xfS3rTFOxoMYQ==",
   "success": true,
   "projectFilePath": "/home/coder/project/workspace/dotnetapp/dotnetapp.csproj",
   "expectedPackageFiles": [
@@ -10,8 +10,8 @@
     "/home/coder/.nuget/packages/microsoft.aspnetcore.http.abstractions/2.2.0/microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
     "/home/coder/.nuget/packages/microsoft.aspnetcore.http.extensions/2.2.0/microsoft.aspnetcore.http.extensions.2.2.0.nupkg.sha512",
     "/home/coder/.nuget/packages/microsoft.aspnetcore.http.features/2.2.0/microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
-    "/home/coder/.nuget/packages/microsoft.aspnetcore.jsonpatch/5.0.1/microsoft.aspnetcore.jsonpatch.5.0.1.nupkg.sha512",
-    "/home/coder/.nuget/packages/microsoft.aspnetcore.mvc.newtonsoftjson/5.0.1/microsoft.aspnetcore.mvc.newtonsoftjson.5.0.1.nupkg.sha512",
+    "/home/coder/.nuget/packages/microsoft.aspnetcore.jsonpatch/5.0.0/microsoft.aspnetcore.jsonpatch.5.0.0.nupkg.sha512",
+    "/home/coder/.nuget/packages/microsoft.aspnetcore.mvc.newtonsoftjson/5.0.0/microsoft.aspnetcore.mvc.newtonsoftjson.5.0.0.nupkg.sha512",
     "/home/coder/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/home/coder/.nuget/packages/microsoft.data.sqlclient/2.1.4/microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "/home/coder/.nuget/packages/microsoft.data.sqlclient.sni.runtime/2.1.1/microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
