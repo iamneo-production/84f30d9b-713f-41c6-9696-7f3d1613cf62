@@ -1,0 +1,59 @@
+body{
+    background-color: #a49ea3;
+}
+#userNavbar {
+    background-color: #80046c;
+}
+
+.navbar-brand{
+    font-size: 40px;
+    color: white;
+}
+#userAcademy{
+    font-size: 20px;
+    color: white;
+}
+#userEnrolledCourse{
+    font-size: 20px;
+    color: white;
+
+}
+#logout{
+    font-size: 20px;
+    color: white;
+}
+#address
+{
+    padding: 10px;
+    background-color: rgb(225, 222, 222);
+}
+#studentForm{
+    padding-top: 8.8%;
+    background-color: rgb(162, 162, 162);
+}
+.c1 {
+    height: 50px;
+}
+#enrollNowButton{
+    padding: 10px;
+    float: right;
+}
+
+#c2{
+    background-color: gray;
+    height: 70%;
+}
+
+.card-text label{
+    margin-right: 5px;
+}
+
+.course-info label{
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.enroll-course label{
+    font-weight: bold;
+    margin-right: 5px;
+}
