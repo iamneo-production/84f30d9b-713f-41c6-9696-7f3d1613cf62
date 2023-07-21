@@ -5,6 +5,9 @@ import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import Signup from './components/Signup';
 import Viewacademy from './components/Viewacademy'
 import Courses from './components/Courses';
+import StudentForm from './components/StudentForm';
+import Enrolledcourse from './components/Enrolledcourse';
+import Editadmission from './components/Editadmission';
 
 function App() {
   return (
@@ -14,6 +17,9 @@ function App() {
         <Route path='/signup' element={<Signup />}></Route>
         <Route path='/institutes' element={<Viewacademy/>}></Route>
         <Route path='/courses' element={<Courses/>}></Route>
+        <Route path='/studentform' element={<StudentForm/>}></Route>
+        <Route path='/enrolledcourses' element={<Enrolledcourse/>}></Route>
+        <Route path="/editAdmission/:id" element={<Editadmission/>}></Route>
       </Routes>
     </BrowserRouter>
   );
