@@ -377,5 +377,175 @@ namespace dotnetapp.Controllers
                 return BadRequest(new { success = false, message = ex.Message });
             }
         }
+                [HttpPost]
+        public IActionResult addCourse([FromBody] CourseModel course)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(_connectionString))
+                {
+                    connection.Open();
+
+                    SqlCommand command = new SqlCommand("INSERT INTO course (courseName, instituteId, studentsEnrolled, courseTiming, courseDuration, courseDescription) VALUES (@courseName, @instituteId, @studentsEnrolled,@courseTiming, @courseDuration, @courseDescription)", connection);
+
+                    command.Parameters.AddWithValue("@courseName", course.courseName);
+                    command.Parameters.AddWithValue("@studentsEnrolled", course.studentsEnrolled);
+                    command.Parameters.AddWithValue("@courseTiming", course.courseTiming);
+                    command.Parameters.AddWithValue("@courseDuration", course.courseDuration);
+                    command.Parameters.AddWithValue("@courseDescription", course.courseDescription);
+                    command.Parameters.AddWithValue("@instituteId",course.instituteId);
+
+                    command.ExecuteNonQuery();
+                }
+
+                return Ok(new { success = true, message = "Course added" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { success = false, message = ex.Message });
+            }
+        }
+    [HttpPut]
+    [Route("{id}")]
+    public IActionResult editCourse(int id, [FromBody] CourseModel course)
+    {
+        try
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand("UPDATE course SET courseName = @courseName, instituteId=@instituteId, studentsEnrolled= @studentsEnrolled, courseTiming = @courseTiming, courseDuration = @courseDuration, courseDescription = @courseDescription WHERE courseId = @Id", connection);
+
+                command.Parameters.AddWithValue("@Id", id);
+                command.Parameters.AddWithValue("@courseName", course.courseName);
+                command.Parameters.AddWithValue("@instituteId", course.instituteId);
+                command.Parameters.AddWithValue("@studentsEnrolled", course.studentsEnrolled);
+                command.Parameters.AddWithValue("@courseTiming", course.courseTiming);
+                command.Parameters.AddWithValue("@courseDuration", course.courseDuration);
+                command.Parameters.AddWithValue("@courseDescription", course.courseDescription);
+
+                int rowsAffected = command.ExecuteNonQuery();
+
+                if (rowsAffected == 0)
+                {
+                    return NotFound("Course edited");
+                }
+            }
+
+            return Ok(new { success = true, message = "Course updated successfully" });
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { success = false, message = ex.Message });
+        }
+    }
+      [HttpGet]
+      [Route("{id}")]
+    public IActionResult GetCourse(int id)
+    {
+        try
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand("SELECT * FROM course WHERE courseId = @Id", connection);
+                command.Parameters.AddWithValue("@Id", id);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    CourseModel course = new CourseModel
+                    {
+                        courseId = (int)reader["courseId"],
+                        courseName = (string)reader["courseName"],
+                        instituteId = (int)reader["instituteId"],
+                        studentsEnrolled = (int)reader["studentsEnrolled"],
+                        courseTiming = (string)reader["courseTiming"],
+                        courseDuration = (int)reader["courseDuration"],
+                        courseDescription = (string)reader["courseDescription"]
+                    };
+
+                    return Ok(new { success = true, course });
+                }
+
+                return NotFound("Course not found");
+            }
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { success = false, message = ex.Message });
+        }
+    }
+     [HttpGet]
+    public IActionResult viewCourse()
+    {
+        try
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand("SELECT * FROM course", connection);
+                SqlDataReader reader = command.ExecuteReader();
+
+                List<CourseModel> courses = new List<CourseModel>();
+
+                while (reader.Read())
+                {
+                    CourseModel course = new CourseModel
+                    {
+                        courseId = (int)reader["courseId"],
+                        courseName = (string)reader["courseName"],
+                        instituteId = (int)reader["instituteId"],
+                        studentsEnrolled = (int)reader["studentsEnrolled"],
+                        courseTiming = (string)reader["courseTiming"],
+                        courseDuration = (int)reader["courseDuration"],
+                        courseDescription = (string)reader["courseDescription"]
+                    };
+
+                    courses.Add(course);
+                }
+
+                return Ok(new { success = true, courses });
+            }
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { success = false, message = ex.Message });
+        }
+    }
+
+    [HttpDelete]
+    [Route("{id}")]
+    public IActionResult deleteCourse(int id)
+    {
+        try
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand("DELETE FROM course WHERE courseId = @Id", connection);
+                command.Parameters.AddWithValue("@Id", id);
+
+                int rowsAffected = command.ExecuteNonQuery();
+
+                if (rowsAffected == 0)
+                {
+                    return NotFound("Course not found");
+                }
+            }
+
+            return Ok(new { success = true, message = "Course deleted" });
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { success = false, message = ex.Message });
+        }
+    }
+
     }
 }
