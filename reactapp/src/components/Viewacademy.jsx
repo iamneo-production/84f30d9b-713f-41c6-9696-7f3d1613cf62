@@ -9,14 +9,14 @@ function Viewacademy(){
     const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(() => {
-        fetch('https://8080-aaccecedbccaaccabfdabddffdbddfadbecbaeee.project.examly.io/user/viewInstitutes')
+        fetch('https://8080-eeaabaccbcfabfdabddffdbddfadbecbaeee.project.examly.io/user/viewInstitutes')
         .then(res=>res.json())
         .then(data=>setAcademyData(data.value));
     },[]);
 
     const handleLogout = () =>
     {
-        fetch('https://8080-aaccecedbccaaccabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
+        fetch('https://8080-eeaabaccbcfabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
         {method: 'DELETE'})
         .then(res => res.json())
         .then(result => alert(result.value))

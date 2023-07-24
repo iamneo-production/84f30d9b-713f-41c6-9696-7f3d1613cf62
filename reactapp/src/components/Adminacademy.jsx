@@ -8,14 +8,14 @@ function Adminacademy() {
 
   const handleLogout = () =>
     {
-        fetch('https://8080-aaccecedbccaaccabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
+        fetch('https://8080-eeaabaccbcfabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
         {method: 'DELETE'})
         .then(res => res.json())
         .then(result => alert(result.value))
     }
 
   useEffect(() => {
-    fetch('https://8080-aaccecedbccaaccabfdabddffdbddfadbecbaeee.project.examly.io/admin/viewInstitutes')
+    fetch('https://8080-eeaabaccbcfabfdabddffdbddfadbecbaeee.project.examly.io/admin/viewInstitutes')
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
@@ -30,7 +30,7 @@ function Adminacademy() {
   }, []);
 
   const handleDelete = (instituteId) => {
-    fetch(`https://8080-aaccecedbccaaccabfdabddffdbddfadbecbaeee.project.examly.io/admin/deleteInstitute/${instituteId}`, {
+    fetch(`https://8080-eeaabaccbcfabfdabddffdbddfadbecbaeee.project.examly.io/admin/deleteInstitute/${instituteId}`, {
       method: 'DELETE',
     })
       .then((response) => response.json())

@@ -8,14 +8,14 @@ function Adminstudent() {
 
   const handleLogout = () =>
     {
-        fetch('https://8080-aaccecedbccaaccabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
+        fetch('https://8080-eeaabaccbcfabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
         {method: 'DELETE'})
         .then(res => res.json())
         .then(result => alert(result.value))
     }
 
   useEffect(() => {
-    fetch('https://8080-aaccecedbccaaccabfdabddffdbddfadbecbaeee.project.examly.io/admin/ViewStudent')
+    fetch('https://8080-eeaabaccbcfabfdabddffdbddfadbecbaeee.project.examly.io/admin/ViewStudent')
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
