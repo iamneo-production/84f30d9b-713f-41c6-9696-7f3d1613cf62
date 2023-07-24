@@ -162,17 +162,14 @@ function Editstudent() {
           </div>
           <div className="col-md-4">
             <div className="form-group">
-              <select className="form-control" id="editGender" value={student.gender}
+              <input type="text" placeholder='enter male or female' className="form-control" id="male/female" value={student.gender}
              onChange={(e) =>
               setStudent((prev) => ({
                 ...prev,
                 gender: e.target.value,
               }))
-            } >
-                <option>Select gender</option>
-                <option>Male</option>
-                <option>Female</option>
-              </select>
+            } />
+              
             </div>
           </div>
         </div>
