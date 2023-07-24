@@ -8,6 +8,15 @@ import Courses from './components/Courses';
 import StudentForm from './components/StudentForm';
 import Enrolledcourse from './components/Enrolledcourse';
 import Editadmission from './components/Editadmission';
+import Adminacademy from './components/Adminacademy';
+import Addacademy from './components/Addacademy';
+import Editacademy from './components/Editacademy';
+import Admincourse from './components/Admincourse';
+import Addcourse from './components/Addcourse';
+import Editcourse from './components/Editcourse';
+import Adminstudent from './components/Adminstudent';
+import Addstudent from './components/Addstudent';
+import Editstudent from './components/Editstudent';
 
 function App() {
   return (
@@ -20,6 +29,15 @@ function App() {
         <Route path='/studentform' element={<StudentForm/>}></Route>
         <Route path='/enrolledcourses' element={<Enrolledcourse/>}></Route>
         <Route path="/editAdmission/:id" element={<Editadmission/>}></Route>
+        <Route path="/Editinstitute/:id" element={<Editacademy />} />
+        <Route path="/addAcademy" element={<Addacademy />} />
+        <Route path="/Course" element={<Admincourse />} />
+        <Route path="/addCourse" element={<Addcourse/>} />
+        <Route path="/editCourse/:id" element={<Editcourse />} />
+        <Route path="/editStudent/:id" element={<Editstudent/>}/>
+        <Route path="/Academy" element={<Adminacademy/>} />
+        <Route path="/Students" element={<Adminstudent />} />
+        <Route path="/addStudent" element={<Addstudent />} />
       </Routes>
     </BrowserRouter>
   );
