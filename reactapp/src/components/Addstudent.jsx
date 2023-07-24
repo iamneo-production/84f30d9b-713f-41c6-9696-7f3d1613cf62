@@ -142,14 +142,11 @@ function Addstudent() {
           </div>
           <div className="col-md-4">
             <div className="form-group">
-              <select className="form-control" id="gender" 
+              <input type="text"  placeholder="enter male or female" className="form-control" id="male/female" 
               value={gender}
               onChange={(e)=>setGender(e.target.value)}
-              >
-                <option>Select gender</option>
-                <option>Male</option>
-                <option>Female</option>
-              </select>
+              />
+        
             </div>
           </div>
         </div>
