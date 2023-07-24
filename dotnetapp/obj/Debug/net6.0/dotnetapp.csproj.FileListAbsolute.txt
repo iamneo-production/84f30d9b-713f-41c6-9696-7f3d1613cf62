@@ -9,6 +9,8 @@
 /home/coder/project/workspace/dotnetapp/bin/Debug/net6.0/dotnetapp.pdb
 /home/coder/project/workspace/dotnetapp/bin/Debug/net6.0/Castle.Core.dll
 /home/coder/project/workspace/dotnetapp/bin/Debug/net6.0/Humanizer.dll
+/home/coder/project/workspace/dotnetapp/bin/Debug/net6.0/Microsoft.AspNetCore.JsonPatch.dll
+/home/coder/project/workspace/dotnetapp/bin/Debug/net6.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 /home/coder/project/workspace/dotnetapp/bin/Debug/net6.0/Microsoft.Data.SqlClient.dll
 /home/coder/project/workspace/dotnetapp/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.dll
 /home/coder/project/workspace/dotnetapp/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -25,6 +27,8 @@
 /home/coder/project/workspace/dotnetapp/bin/Debug/net6.0/Microsoft.OpenApi.dll
 /home/coder/project/workspace/dotnetapp/bin/Debug/net6.0/Microsoft.Win32.SystemEvents.dll
 /home/coder/project/workspace/dotnetapp/bin/Debug/net6.0/Moq.dll
+/home/coder/project/workspace/dotnetapp/bin/Debug/net6.0/Newtonsoft.Json.dll
+/home/coder/project/workspace/dotnetapp/bin/Debug/net6.0/Newtonsoft.Json.Bson.dll
 /home/coder/project/workspace/dotnetapp/bin/Debug/net6.0/nunit.framework.dll
 /home/coder/project/workspace/dotnetapp/bin/Debug/net6.0/Swashbuckle.AspNetCore.Swagger.dll
 /home/coder/project/workspace/dotnetapp/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerGen.dll
@@ -68,15 +72,3 @@
 /home/coder/project/workspace/dotnetapp/obj/Debug/net6.0/dotnetapp.pdb
 /home/coder/project/workspace/dotnetapp/obj/Debug/net6.0/dotnetapp.genruntimeconfig.cache
 /home/coder/project/workspace/dotnetapp/obj/Debug/net6.0/ref/dotnetapp.dll
-/home/coder/project/workspace/dotnetapp/bin/Debug/net6.0/TestProject/bin/Debug/net6.0/appsettings.Development.json
-/home/coder/project/workspace/dotnetapp/bin/Debug/net6.0/TestProject/bin/Debug/net6.0/appsettings.json
-/home/coder/project/workspace/dotnetapp/bin/Debug/net6.0/TestProject/bin/Debug/net6.0/dotnetapp.deps.json
-/home/coder/project/workspace/dotnetapp/bin/Debug/net6.0/TestProject/bin/Debug/net6.0/dotnetapp.runtimeconfig.json
-/home/coder/project/workspace/dotnetapp/bin/Debug/net6.0/TestProject/bin/Debug/net6.0/TestProject.deps.json
-/home/coder/project/workspace/dotnetapp/bin/Debug/net6.0/TestProject/bin/Debug/net6.0/TestProject.runtimeconfig.json
-/home/coder/project/workspace/dotnetapp/bin/Debug/net6.0/TestProject/bin/Debug/net6.0/TestProject/obj/project.assets.json
-/home/coder/project/workspace/dotnetapp/bin/Debug/net6.0/TestProject/bin/Debug/net6.0/TestProject/obj/TestProject.csproj.nuget.dgspec.json
-/home/coder/project/workspace/dotnetapp/bin/Debug/net6.0/Microsoft.AspNetCore.JsonPatch.dll
-/home/coder/project/workspace/dotnetapp/bin/Debug/net6.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
-/home/coder/project/workspace/dotnetapp/bin/Debug/net6.0/Newtonsoft.Json.dll
-/home/coder/project/workspace/dotnetapp/bin/Debug/net6.0/Newtonsoft.Json.Bson.dll
