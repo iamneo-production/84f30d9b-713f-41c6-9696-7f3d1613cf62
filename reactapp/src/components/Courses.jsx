@@ -21,7 +21,7 @@ function Courses() {
         const filteredData = courses.filter((item) =>
         item.courseName.toLowerCase().includes(searchQuery.toLowerCase())
         );
-        setCourses(courses);
+        setCourses(filteredData);
         if (filteredData.length === 0) {
         alert('No results found.');
         window.location.reload();
