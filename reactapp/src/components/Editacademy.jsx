@@ -20,7 +20,7 @@ function Editacademy() {
 
     {
 
-        fetch('https://8080-aaccecedbccaaccabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
+        fetch('https://8080-dabcfdceacfcabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
 
         {method: 'DELETE'})
 
@@ -34,7 +34,7 @@ function Editacademy() {
 
     useEffect(() => {
 
-    fetch(`https://8080-aaccecedbccaaccabfdabddffdbddfadbecbaeee.project.examly.io/admin/GetInstitute/${id}`)
+    fetch(`https://8080-dabcfdceacfcabfdabddffdbddfadbecbaeee.project.examly.io/admin/GetInstitute/${id}`)
 
       .then((response) => response.json())
 
@@ -96,7 +96,7 @@ function Editacademy() {
 
  
 
-    fetch(`https://8080-aaccecedbccaaccabfdabddffdbddfadbecbaeee.project.examly.io/admin/editInstitute/${id}`, {
+    fetch(`https://8080-dabcfdceacfcabfdabddffdbddfadbecbaeee.project.examly.io/admin/editInstitute/${id}`, {
 
       method: 'PUT',
 
