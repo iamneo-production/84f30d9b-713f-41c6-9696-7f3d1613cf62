@@ -10,7 +10,7 @@ function Courses() {
   const location=useLocation();
   const handleLogout = () =>
   {
-    fetch('https://8080-aaccecedbccaaccabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
+    fetch('https://8080-dfffaaaaabccbabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
     {method: 'DELETE'})
     .then(res => res.json())
     .then(result => alert(result.value))
@@ -30,7 +30,7 @@ function Courses() {
 
   useEffect(() => {
     const id=location.state.id;
-    fetch('https://8080-aaccecedbccaaccabfdabddffdbddfadbecbaeee.project.examly.io/user/viewStatus?id='+id)
+    fetch('https://8080-dfffaaaaabccbabfdabddffdbddfadbecbaeee.project.examly.io/user/viewStatus?id='+id)
       .then((response) => response.json())
       .then((data) => {
           setCourses(data.value);

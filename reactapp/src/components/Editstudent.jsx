@@ -25,14 +25,14 @@ function Editstudent() {
 
   const handleLogout = () =>
     {
-        fetch('https://8080-aaccecedbccaaccabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
+        fetch('https://8080-dfffaaaaabccbabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
         {method: 'DELETE'})
         .then(res => res.json())
         .then(result => alert(result.value))
     }
 
   useEffect(() => {
-    fetch(`https://8080-aaccecedbccaaccabfdabddffdbddfadbecbaeee.project.examly.io/admin/GetStudent/${id}`)
+    fetch(`https://8080-dfffaaaaabccbabfdabddffdbddfadbecbaeee.project.examly.io/admin/GetStudent/${id}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
@@ -70,7 +70,7 @@ function Editstudent() {
       return;
     }
   
-    fetch(`https://8080-aaccecedbccaaccabfdabddffdbddfadbecbaeee.project.examly.io/admin/editStudent/${id}`, {
+    fetch(`https://8080-dfffaaaaabccbabfdabddffdbddfadbecbaeee.project.examly.io/admin/editStudent/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
