@@ -8,14 +8,14 @@ function Adminstudent() {
 
   const handleLogout = () =>
     {
-        fetch('https://8080-aaccecedbccaaccabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
+        fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
         {method: 'DELETE'})
         .then(res => res.json())
         .then(result => alert(result.value))
     }
 
   useEffect(() => {
-    fetch('https://8080-aaccecedbccaaccabfdabddffdbddfadbecbaeee.project.examly.io/admin/ViewStudent')
+    fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/admin/ViewStudent')
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
@@ -34,7 +34,7 @@ function Adminstudent() {
   }, []);
 
   const handleDelete = (studentId) => {
-    fetch(`https://8080-aaccecedbccaaccabfdabddffdbddfadbecbaeee.project.examly.io/admin/deleteStudent/${studentId}`, {
+    fetch(`https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/admin/deleteStudent/${studentId}`, {
       method: 'DELETE',
     })
       .then((response) => response.json())
@@ -50,7 +50,7 @@ function Adminstudent() {
   const searchStudent = (event) => {
     event.preventDefault();
     const filteredData = students.filter((item) =>
-      item.firstName.toString().toLowerCase().includes(searchQuery.toLowerCase())
+      item.id.toString().toLowerCase().includes(searchQuery.toLowerCase())
     );
     setStudents(filteredData);
     if (filteredData.length === 0) {

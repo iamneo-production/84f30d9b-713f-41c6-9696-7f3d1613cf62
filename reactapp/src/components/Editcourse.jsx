@@ -20,7 +20,7 @@ function Editcourse() {
 
     {
 
-        fetch('https://8080-aaccecedbccaaccabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
+        fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
 
         {method: 'DELETE'})
 
@@ -34,7 +34,7 @@ function Editcourse() {
 
   useEffect(() => {
 
-    fetch(`https://8080-aaccecedbccaaccabfdabddffdbddfadbecbaeee.project.examly.io/admin/GetCourse/${id}`)
+    fetch(`https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/admin/GetCourse/${id}`)
 
       .then((response) => response.json())
 
@@ -94,7 +94,7 @@ function Editcourse() {
 
  
 
-    fetch(`https://8080-aaccecedbccaaccabfdabddffdbddfadbecbaeee.project.examly.io/admin/editCourse/${id}`, {
+    fetch(`https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/admin/editCourse/${id}`, {
 
       method: 'PUT',
 
@@ -524,7 +524,7 @@ function Editcourse() {
 
                 position: fixed;
 
-                bottom: 140px;
+                bottom: 100px;
 
                 right: 125px;
 

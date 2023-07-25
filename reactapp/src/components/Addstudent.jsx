@@ -23,7 +23,7 @@ function Addstudent() {
 
   const handleLogout = () =>
   {
-      fetch('https://8080-aaccecedbccaaccabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
+      fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
       {method: 'DELETE'})
       .then(res => res.json())
       .then(result => alert(result.value))
@@ -55,7 +55,7 @@ function Addstudent() {
       pincode,
       nationality,
     };
-        fetch('https://8080-aaccecedbccaaccabfdabddffdbddfadbecbaeee.project.examly.io/admin/addStudent', {
+        fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/admin/addStudent', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

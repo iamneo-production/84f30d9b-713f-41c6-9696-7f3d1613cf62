@@ -30,7 +30,7 @@ function Addcourse() {
 
   {
 
-      fetch('https://8080-aaccecedbccaaccabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
+      fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
 
       {method: 'DELETE'})
 
@@ -76,7 +76,7 @@ function Addcourse() {
 
    
 
-    fetch('https://8080-aaccecedbccaaccabfdabddffdbddfadbecbaeee.project.examly.io/admin/addCourse', {
+    fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/admin/addCourse', {
 
       method: 'POST',
 
@@ -450,7 +450,7 @@ function Addcourse() {
 
                 position: fixed;
 
-                bottom: 140px;
+                bottom: 100px;
 
                 right: 125px;
 
