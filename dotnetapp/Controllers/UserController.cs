@@ -408,7 +408,101 @@ namespace dotnetapp.Controllers
                 return BadRequest(new { success = false, message = ex.Message });
             }
         }
+        [HttpGet]
+        [Route("user/getAdmission/{id}")]
+        public IActionResult GetAdmission(int id)
+        {
+            try
+            {
+                string sqlDataSource = _configuration.GetConnectionString("myconnstring");
 
+                using (SqlConnection connection = new SqlConnection(sqlDataSource))
+                {
+                    connection.Open();
 
+                    SqlCommand command = new SqlCommand("SELECT * FROM student WHERE studentId = @Id", connection);
+                    command.Parameters.AddWithValue("@Id", id);
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        StudentModel student = new StudentModel
+                        {
+                            studentId = (int)reader["studentId"],
+                            firstName = (string)reader["firstName"],
+                            phoneNumber1 = (string)reader["phoneNumber1"],
+                            lastName = (string)reader["lastName"],
+                            gender = (string)reader["gender"],
+                            fatherName = (string)reader["fatherName"],
+                            motherName = (string)reader["motherName"],
+                            emailId = (string)reader["emailId"],
+                            phoneNumber2 = (string)reader["phoneNumber2"],
+                            age = (int)reader["age"],
+                            houseNo = (string)reader["houseNo"],
+                            streetName = (string)reader["streetName"],
+                            areaName = (string)reader["areaName"],
+                            state = (string)reader["state"],
+                            pincode = (int)reader["pincode"],
+                            nationality = (string)reader["nationality"]
+                        };
+
+                        return Ok(new { success = true, student });
+                    }
+
+                    return NotFound("Student not found");
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { success = false, message = ex.Message });
+            }
+        }
+
+        [HttpPut]
+        [Route("user/editAdmission/{id}")]
+        public IActionResult editAdmission(int id, [FromBody] StudentModel student)
+        {
+            try
+            {
+                string sqlDataSource = _configuration.GetConnectionString("myconnstring");
+                using (SqlConnection connection = new SqlConnection(sqlDataSource))
+                {
+                    connection.Open();
+
+                    SqlCommand command = new SqlCommand("UPDATE student SET firstName = @firstName, lastName = @lastName, gender = @gender, fatherName = @fatherName, phoneNumber1=@phoneNumber1, phoneNumber2=@phoneNumber2,motherName = @motherName, emailId = @emailId, age = @age, houseNo = @houseNo, streetName = @streetName, areaName = @areaName, pincode = @pincode, state = @state, nationality = @nationality WHERE studentId = @Id", connection);
+
+                    command.Parameters.AddWithValue("@Id", id);
+                    command.Parameters.AddWithValue("@firstName", student.firstName);
+                    command.Parameters.AddWithValue("@phoneNumber1", student.phoneNumber1);
+                    command.Parameters.AddWithValue("@lastName", student.lastName);
+                    command.Parameters.AddWithValue("@gender", student.gender);
+                    command.Parameters.AddWithValue("@fatherName", student.fatherName);
+                    command.Parameters.AddWithValue("@motherName", student.motherName);
+                    command.Parameters.AddWithValue("@emailId", student.emailId);
+                    command.Parameters.AddWithValue("@phoneNumber2", student.phoneNumber2);
+                    command.Parameters.AddWithValue("@age", student.age);
+                    command.Parameters.AddWithValue("@houseNo", student.houseNo);
+                    command.Parameters.AddWithValue("@streetName", student.streetName);
+                    command.Parameters.AddWithValue("@areaName", student.areaName);
+                    command.Parameters.AddWithValue("@state", student.state);
+                    command.Parameters.AddWithValue("@pincode", student.pincode);
+                    command.Parameters.AddWithValue("@nationality", student.nationality);
+
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if (rowsAffected == 0)
+                    {
+                        return NotFound("Student not found");
+                    }
+                }
+
+                return Ok(new { success = true, message = "Student details edited" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { success = false, message = ex.Message });
+            }
+        }
     }
 }
