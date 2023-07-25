@@ -2,8 +2,11 @@ import React from 'react'
 import './userAcademy.css'
 import { Link, Outlet, useLocation, useNavigate} from 'react-router-dom'
 import { useState } from 'react'
+import { useAuthenticationUser } from './UseAuthentication'
+import studentVal from './Validations'
 
 function StudentForm(){
+    useAuthenticationUser();
     const [student,setStudent]=useState({
         firstName: '',
         lastName: '',
@@ -21,7 +24,7 @@ function StudentForm(){
         state: '',
         nationality: ''
     })
-
+    const [error,setError]=useState('');
     const location = useLocation()
 
     const navigate = useNavigate()
@@ -34,7 +37,9 @@ function StudentForm(){
         fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
         {method: 'DELETE'})
         .then(res => res.json())
-        .then(result => alert(result.value))
+        .then(result => {alert(result.value)
+            localStorage.clear();            
+        })
     }
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -44,6 +49,8 @@ function StudentForm(){
           alert('Please fill in all the fields.');
           return;
         }
+        setError(studentVal(student));
+        if(error.emailId === "" && error.phoneNumber1==="" && error.phoneNumber2===""){
         const id = location.state.id;
             fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/addAdmission/'+id,{
                 method:'POST',
@@ -83,6 +90,7 @@ function StudentForm(){
                 ,(error)=>{
                 alert(error);
             })
+        }
     }
 
     return(
@@ -136,10 +144,12 @@ function StudentForm(){
                         <div class="col">
                             <input type="text" id="phoneNumber1" placeholder='enter phone number' name='phoneNumber1' 
                             onChange={handleInput} className='form-control rounded-0 c1' autoComplete='off' />
+                            {error.phoneNumber1 && <span className='text-danger'>{error.phoneNumber1}</span>}
                         </div>
                         <div class="col">
                             <input type="text" id="phoneNumber2" placeholder='enter alternate number' name='phoneNumber2' 
                             onChange={handleInput} className='form-control rounded-0 c1' autoComplete='off' />
+                            {error.phoneNumber2 && <span className='text-danger'>{error.phoneNumber2}</span>}
                         </div>
                     </div>
                     <br/>
@@ -149,6 +159,7 @@ function StudentForm(){
                             onChange={handleInput} className='form-control rounded-0 c1' autoComplete='off' /><br/>
                             <input type="email" id="emailId" placeholder='enter email Id' name='emailId' 
                             onChange={handleInput} className='form-control rounded-0 c1' autoComplete='off' /><br/>
+                            {error.emailId && <span className='text-danger'>{error.emailId}</span>}
                             <input type="number" id="age" placeholder='enter your age' name='age' 
                             onChange={handleInput} className='form-control rounded-0 c1' autoComplete='off' />
                         </div>

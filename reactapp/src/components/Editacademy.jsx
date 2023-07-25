@@ -4,13 +4,18 @@ import { Link, useParams } from 'react-router-dom';
 
 import { useNavigate } from 'react-router-dom';
 
+import { useAuthenticationAdmin } from './UseAuthentication';
+import AcademyCourseVal from './Validations';
+
  
 
 function Editacademy() {
-
+  useAuthenticationAdmin();
   const { id } = useParams();
 
   const [institute, setInstitute] = useState(null);
+
+  const [error,setError]= useState('');
 
   const navigate = useNavigate();
 
@@ -26,7 +31,9 @@ function Editacademy() {
 
         .then(res => res.json())
 
-        .then(result => alert(result.value))
+        .then(result => {alert(result.value)
+          localStorage.clear();            
+        })
 
     }
 
@@ -95,7 +102,8 @@ function Editacademy() {
     }
 
  
-
+    setError(AcademyCourseVal(updatedInstitute))
+    if(error.email==="" && error.mobile===""){
     fetch(`https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/admin/editInstitute/${id}`, {
 
       method: 'PUT',
@@ -125,6 +133,7 @@ function Editacademy() {
         console.error('Error:', error);
 
       });
+    }
 
   };
 
@@ -299,6 +308,7 @@ function Editacademy() {
                 }
 
               />
+              {error.mobile && <span className='text-danger'>{error.mobile}</span>}
 
             </div>
 
@@ -367,6 +377,7 @@ function Editacademy() {
                 }
 
               />
+              {error.email && <span className='text-danger'>{error.email}</span>}
 
             </div>
 

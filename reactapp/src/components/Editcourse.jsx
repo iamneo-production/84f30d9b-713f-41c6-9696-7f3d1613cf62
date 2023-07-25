@@ -4,10 +4,10 @@ import { useNavigate } from 'react-router-dom';
 
 import React, { useEffect, useState } from 'react';
 
- 
+import { useAuthenticationAdmin } from './UseAuthentication';
 
 function Editcourse() {
-
+  useAuthenticationAdmin();
   const { id } = useParams();
 
   const [course, setCourse] = useState(null);
@@ -26,7 +26,9 @@ function Editcourse() {
 
         .then(res => res.json())
 
-        .then(result => alert(result.value))
+        .then(result => {alert(result.value)
+          localStorage.clear();            
+        })
 
     }
 

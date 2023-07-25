@@ -3,11 +3,13 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useNavigate } from 'react-router-dom';
+import { useAuthenticationAdmin } from './UseAuthentication';
 
  
 
 function Addcourse() {
 
+  useAuthenticationAdmin();
   const [courseName, setCourseName] = useState('');
 
   const [courseDuration, setCourseDuration] = useState('');
@@ -36,7 +38,9 @@ function Addcourse() {
 
       .then(res => res.json())
 
-      .then(result => alert(result.value))
+        .then(result => {alert(result.value)
+            localStorage.clear();            
+        })
 
   }
 

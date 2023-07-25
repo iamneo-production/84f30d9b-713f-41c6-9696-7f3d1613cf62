@@ -4,8 +4,11 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { FaTrash, FaPencilAlt } from 'react-icons/fa';
+import { useAuthenticationAdmin } from './UseAuthentication';
 
 function Admincourse() {
+
+  useAuthenticationAdmin();
 
   const [courses, setCourses] = useState([]);
 
@@ -23,7 +26,9 @@ function Admincourse() {
 
         .then(res => res.json())
 
-        .then(result => alert(result.value))
+        .then(result => {alert(result.value)
+          localStorage.clear();            
+        })
 
     }
 

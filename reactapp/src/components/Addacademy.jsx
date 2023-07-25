@@ -3,11 +3,14 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useNavigate } from 'react-router-dom';
+import { useAuthenticationAdmin } from './UseAuthentication';
+import AcademyCourseVal from './Validations';
 
  
 
 function Addacademy() {
 
+  useAuthenticationAdmin();
   const [instituteName, setAcademyName] = useState('');
 
   const [mobile, setContactNumber] = useState('');
@@ -19,6 +22,8 @@ function Addacademy() {
   const [instituteAddress, setAcademyLocation] = useState('');
 
   const [instituteDescription, setAcademyDescription] = useState('');
+
+  const [error,setError]=useState('');
 
   const navigate=useNavigate();
 
@@ -34,8 +39,9 @@ function Addacademy() {
 
         .then(res => res.json())
 
-        .then(result => alert(result.value))
-
+        .then(result => {alert(result.value)
+            localStorage.clear();            
+        })
     }
 
  
@@ -51,9 +57,6 @@ function Addacademy() {
       return;
 
     }
-
- 
-
     // Prepare data for the API req
 
     const data = {
@@ -73,6 +76,8 @@ function Addacademy() {
     };
 
    
+    setError(AcademyCourseVal({"email":email,"mobile":mobile}))
+    if(error.email === "" && error.mobile === "" ){
 
     // Send the data to the API
 
@@ -115,6 +120,7 @@ function Addacademy() {
         console.error(error);
 
       });
+    }
 
   };
 
@@ -261,6 +267,7 @@ function Addacademy() {
                 required
 
               />
+              {error.mobile && <span className='text-danger'>{error.mobile}</span>}
 
             </div>
 
@@ -313,7 +320,7 @@ function Addacademy() {
                 required
 
               />
-
+              {error.email && <span className='text-danger'>{error.email}</span>}
             </div>
 
           </div>

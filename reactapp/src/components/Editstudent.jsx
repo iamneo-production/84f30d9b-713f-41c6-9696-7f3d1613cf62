@@ -1,8 +1,11 @@
 import { Link, useParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuthenticationAdmin } from './UseAuthentication';
+import studentVal from './Validations';
 
 function Editstudent() {
+  useAuthenticationAdmin();
   const navigate=useNavigate();
   const { id } = useParams();
   const [student, setStudent] = useState({
@@ -22,13 +25,16 @@ function Editstudent() {
     pincode: '',
     nationality: '',
   });
+  const [error,setError]=useState('');
 
   const handleLogout = () =>
     {
         fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
         {method: 'DELETE'})
         .then(res => res.json())
-        .then(result => alert(result.value))
+        .then(result => {alert(result.value)
+          localStorage.clear();            
+        })
     }
 
   useEffect(() => {
@@ -69,7 +75,8 @@ function Editstudent() {
       alert('Please fill in all the fields.');
       return;
     }
-  
+    setError(studentVal(updatedStudent))
+    if(error.emailId==="" && error.phoneNumber1 === "" && error.phoneNumber2 === ""){
     fetch(`https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/admin/editStudent/${id}`, {
       method: 'PUT',
       headers: {
@@ -85,6 +92,7 @@ function Editstudent() {
       .catch((error) => {
         console.error('Error:', error);
       });
+    }
   };
   
 
@@ -198,6 +206,7 @@ function Editstudent() {
                   phoneNumber1: e.target.value,
                 }))
               }/>
+              {error.phoneNumber1 && <span className='text-danger'>{error.phoneNumber1}</span>}
             </div>
           </div>
           <div className="col-md-4">
@@ -211,6 +220,7 @@ function Editstudent() {
                   phoneNumber2: e.target.value,
                 }))
               }/>
+              {error.phoneNumber2 && <span className='text-danger'>{error.phoneNumber2}</span>}
             </div>
           </div>
         </div>
@@ -237,6 +247,7 @@ function Editstudent() {
                   emailId: e.target.value,
                 }))
               } />
+              {error.emailId && <span className='text-danger'>{error.emailId}</span>}
             </div>
           </div>
           <div className="col-md-4">

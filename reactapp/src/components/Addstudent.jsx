@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuthenticationAdmin } from './UseAuthentication';
+import studentVal from './Validations';
 
 function Addstudent() {
+  useAuthenticationAdmin();
   const navigate=useNavigate();
   const [firstName, setFirstName] = useState('');
   const [phoneNumber1, setPhoneNumber1] = useState('');
@@ -20,13 +23,16 @@ function Addstudent() {
   const [state, setState] = useState('');
   const [pincode, setPincode] = useState('');
   const [nationality, setNationality] = useState('');
+  const [error,setError]=useState('');
 
   const handleLogout = () =>
   {
       fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
       {method: 'DELETE'})
       .then(res => res.json())
-      .then(result => alert(result.value))
+      .then(result => {alert(result.value)
+        localStorage.clear();            
+    })
   }
 
   const addStudent = () => {
@@ -55,6 +61,9 @@ function Addstudent() {
       pincode,
       nationality,
     };
+    setError(studentVal({"emailId":emailId,"phoneNumber1":phoneNumber1,"phoneNumber2":phoneNumber2}))
+    if(error.emailId==="" && error.phoneNumber1==="" && error.phoneNumber2==="")
+    {
         fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/admin/addStudent', {
       method: 'POST',
       headers: {
@@ -75,6 +84,7 @@ function Addstudent() {
         alert('An error occurred while adding the student. Please try again.');
         console.error(error);
       });
+    }
   };
   return (
     <>
@@ -168,6 +178,7 @@ function Addstudent() {
                value={phoneNumber1} 
                onChange={(e)=>setPhoneNumber1(e.target.value)}
               required/>
+              {error.phoneNumber1 && <span className='text-danger'>{error.phoneNumber1}</span>}
             </div>
           </div>
           <div className="col-md-4">
@@ -178,6 +189,7 @@ function Addstudent() {
                onChange={(e)=>setPhoneNumber2(e.target.value)}
               required
                />
+               {error.phoneNumber2 && <span className='text-danger'>{error.phoneNumber2}</span>}
             </div>
           </div>
         </div>
@@ -200,6 +212,7 @@ function Addstudent() {
               onChange={(e)=>setEmailId(e.target.value)}
               required
                 />
+              {error.emailId && <span className='text-danger'>{error.emailId}</span>}
             </div>
           </div>
           <div className="col-md-4">

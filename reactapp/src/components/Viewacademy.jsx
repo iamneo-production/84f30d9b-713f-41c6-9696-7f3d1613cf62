@@ -3,8 +3,10 @@ import './userAcademy.css'
 import { useState, useEffect } from 'react';
 import { Link, Outlet } from 'react-router-dom'
 import { Col, Button, Form} from "react-bootstrap";
+import { useAuthenticationUser } from './UseAuthentication';
   
 function Viewacademy(){
+    useAuthenticationUser();
     const [academydata,setAcademyData]=useState([]);
     const [searchQuery, setSearchQuery] = useState('');
 
@@ -19,7 +21,9 @@ function Viewacademy(){
         fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
         {method: 'DELETE'})
         .then(res => res.json())
-        .then(result => alert(result.value))
+        .then(result => {alert(result.value)
+            localStorage.clear();            
+        })
     }
 
     const handleSearch = (event) => {

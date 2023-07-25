@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaTrash, FaPencilAlt } from 'react-icons/fa';
+import { useAuthenticationAdmin } from './UseAuthentication';
 
 function Adminacademy() {
+
+  useAuthenticationAdmin();
   const [institutes, setInstitutes] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -11,7 +14,9 @@ function Adminacademy() {
         fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
         {method: 'DELETE'})
         .then(res => res.json())
-        .then(result => alert(result.value))
+        .then(result => {alert(result.value)
+          localStorage.clear();            
+        })
     }
 
   useEffect(() => {

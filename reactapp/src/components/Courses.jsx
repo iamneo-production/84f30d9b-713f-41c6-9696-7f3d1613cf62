@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Link, Outlet, useLocation} from 'react-router-dom';
 import { Button, Col, Form } from "react-bootstrap";
 import './userAcademy.css'
+import { useAuthenticationUser } from './UseAuthentication';
 
 function Courses() {
+  useAuthenticationUser();
   const [courses, setCourses] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [login, setLogin] = useState(false);
@@ -13,7 +15,9 @@ function Courses() {
     fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
     {method: 'DELETE'})
     .then(res => res.json())
-    .then(result => alert(result.value))
+    .then(result => {alert(result.value)
+      localStorage.clear();            
+    })
   }
 
     const handleSearch = (event) => {
