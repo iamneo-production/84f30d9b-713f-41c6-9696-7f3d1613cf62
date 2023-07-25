@@ -17,8 +17,8 @@
     "web-vitals": "^1.1.1"
   },
   "scripts": {
-    "start": "PORT=8081 react-scripts --openssl-legacy-provider start",
-    "build": "react-scripts --openssl-legacy-provider build",
+    "start": "PORT=8081 react-script - start",
+    "build": "react-scripts  build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

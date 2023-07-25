@@ -32,7 +32,7 @@ function Editstudent() {
     }
 
   useEffect(() => {
-    fetch(`https://8080-aaccecedbccaaccabfdabddffdbddfadbecbaeee.project.examly.io/admin/GetStudent/${id}`)
+    fetch(`https://8080-dfacffdfabfdabddffdbddfadbecbaeee.project.examly.io/admin/GetStudent/${id}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
@@ -70,7 +70,7 @@ function Editstudent() {
       return;
     }
   
-    fetch(`https://8080-aaccecedbccaaccabfdabddffdbddfadbecbaeee.project.examly.io/admin/editStudent/${id}`, {
+    fetch(`https://8080-dfacffdfabfdabddffdbddfadbecbaeee.project.examly.io/admin/editStudent/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

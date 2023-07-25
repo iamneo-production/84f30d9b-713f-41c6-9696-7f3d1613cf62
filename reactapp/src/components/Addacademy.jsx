@@ -28,7 +28,7 @@ function Addacademy() {
 
     {
 
-        fetch('https://8080-aaccecedbccaaccabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
+        fetch('https://8080-dfacffdfabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
 
         {method: 'DELETE'})
 
@@ -76,7 +76,7 @@ function Addacademy() {
 
     // Send the data to the API
 
-    fetch('https://8080-aaccecedbccaaccabfdabddffdbddfadbecbaeee.project.examly.io/admin/addInstitute', {
+    fetch('https://8080-dfacffdfabfdabddffdbddfadbecbaeee.project.examly.io/admin/addInstitute', {
 
       method: 'POST',
 
