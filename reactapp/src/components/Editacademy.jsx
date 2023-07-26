@@ -25,7 +25,7 @@ function Editacademy() {
 
     {
 
-        fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
+        fetch('https://8080-aaccecedbccaaccabfdabddffdbddfaaceaebbbdfbba.project.examly.io/user/logout',
 
         {method: 'DELETE'})
 
@@ -41,7 +41,7 @@ function Editacademy() {
 
     useEffect(() => {
 
-    fetch(`https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/admin/GetInstitute/${id}`)
+    fetch(`https://8080-aaccecedbccaaccabfdabddffdbddfaaceaebbbdfbba.project.examly.io/admin/GetInstitute/${id}`)
 
       .then((response) => response.json())
 
@@ -104,7 +104,7 @@ function Editacademy() {
  
     setError(AcademyCourseVal(updatedInstitute))
     if(error.email==="" && error.mobile===""){
-    fetch(`https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/admin/editInstitute/${id}`, {
+    fetch(`https://8080-aaccecedbccaaccabfdabddffdbddfaaceaebbbdfbba.project.examly.io/admin/editInstitute/${id}`, {
 
       method: 'PUT',
 

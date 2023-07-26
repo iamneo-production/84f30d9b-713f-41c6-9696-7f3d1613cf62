@@ -12,7 +12,7 @@ function Enrolledcourse(){
     
     const handleLogout = () =>
     {
-        fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
+        fetch('https://8080-aaccecedbccaaccabfdabddffdbddfaaceaebbbdfbba.project.examly.io/user/logout',
         {method: 'DELETE'})
         .then(res => res.json())
         .then(result => {alert(result.value)
@@ -21,7 +21,7 @@ function Enrolledcourse(){
     }
     useEffect(()=>
     {
-        fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/viewAdmission')
+        fetch('https://8080-aaccecedbccaaccabfdabddffdbddfaaceaebbbdfbba.project.examly.io/user/viewAdmission')
         .then(response => response.json())
         .then((result) => 
         {
@@ -40,7 +40,7 @@ function Enrolledcourse(){
     }
     
     const handleDelete = (admissionId) => {
-        fetch(`https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/deleteAdmission/${admissionId}`,
+        fetch(`https://8080-aaccecedbccaaccabfdabddffdbddfaaceaebbbdfbba.project.examly.io/user/deleteAdmission/${admissionId}`,
         {method: 'DELETE'})
         .then((response) => response.json())
         .then((data) => {

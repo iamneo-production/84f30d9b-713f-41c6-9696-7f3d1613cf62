@@ -29,7 +29,7 @@ function Editstudent() {
 
   const handleLogout = () =>
     {
-        fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
+        fetch('https://8080-aaccecedbccaaccabfdabddffdbddfaaceaebbbdfbba.project.examly.io/user/logout',
         {method: 'DELETE'})
         .then(res => res.json())
         .then(result => {alert(result.value)
@@ -38,7 +38,7 @@ function Editstudent() {
     }
 
   useEffect(() => {
-    fetch(`https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/admin/GetStudent/${id}`)
+    fetch(`https://8080-aaccecedbccaaccabfdabddffdbddfaaceaebbbdfbba.project.examly.io/admin/GetStudent/${id}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
@@ -77,7 +77,7 @@ function Editstudent() {
     }
     setError(studentVal(updatedStudent))
     if(error.email === "" && error.phoneNumber1 === "" && error.phoneNumber2 === ""){
-    fetch(`https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/admin/editStudent/${id}`, {
+    fetch(`https://8080-aaccecedbccaaccabfdabddffdbddfaaceaebbbdfbba.project.examly.io/admin/editStudent/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

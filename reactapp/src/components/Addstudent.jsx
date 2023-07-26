@@ -27,7 +27,7 @@ function Addstudent() {
 
   const handleLogout = () =>
   {
-      fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
+      fetch('https://8080-aaccecedbccaaccabfdabddffdbddfaaceaebbbdfbba.project.examly.io/user/logout',
       {method: 'DELETE'})
       .then(res => res.json())
       .then(result => {alert(result.value)
@@ -64,7 +64,7 @@ function Addstudent() {
     setError(studentVal({"emailId":emailId,"phoneNumber1":phoneNumber1,"phoneNumber2":phoneNumber2}))
     if(error.email === "" && error.phoneNumber1 === "" && error.phoneNumber2 === "")
     {
-        fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/admin/addStudent', {
+        fetch('https://8080-aaccecedbccaaccabfdabddffdbddfaaceaebbbdfbba.project.examly.io/admin/addStudent', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
