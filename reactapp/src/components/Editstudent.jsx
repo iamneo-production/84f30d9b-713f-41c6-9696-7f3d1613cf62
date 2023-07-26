@@ -76,7 +76,7 @@ function Editstudent() {
       return;
     }
     setError(studentVal(updatedStudent))
-    if(error.emailId==="" && error.phoneNumber1 === "" && error.phoneNumber2 === ""){
+    if(error.email === "" && error.phoneNumber1 === "" && error.phoneNumber2 === ""){
     fetch(`https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/admin/editStudent/${id}`, {
       method: 'PUT',
       headers: {
@@ -247,7 +247,7 @@ function Editstudent() {
                   emailId: e.target.value,
                 }))
               } />
-              {error.emailId && <span className='text-danger'>{error.emailId}</span>}
+              {error.email && <span className='text-danger'>{error.email}</span>}
             </div>
           </div>
           <div className="col-md-4">

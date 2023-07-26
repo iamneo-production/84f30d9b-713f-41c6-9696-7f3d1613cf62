@@ -77,7 +77,7 @@ function Editadmission(){
            return;
          }
         setError(studentVal(updatedStudent))
-        if(error.emailId==="" && error.phoneNumber1==="" && error.phoneNumber2===""){
+        if(error.email === "" && error.phoneNumber1 === "" && error.phoneNumber2 === ""){
          fetch(`https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/editAdmission/${id}`, {
            method: 'PUT',
            headers: {
@@ -197,7 +197,7 @@ function Editadmission(){
                                     ...prev,
                                     emailId: e.target.value,
                                 }))} readOnly/><br/>
-                            {error.emailId && <span className='text-danger'>{error.emailId}</span>}
+                            {error.email && <span className='text-danger'>{error.email}</span>}
                             <input type="number" id="age" placeholder='enter your age' name='age' 
                             value={student.age} className='form-control rounded-0 c1' autoComplete='off' onChange={(e) =>
                                 setStudent((prev) => ({

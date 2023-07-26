@@ -50,7 +50,7 @@ function StudentForm(){
           return;
         }
         setError(studentVal(student));
-        if(error.emailId === "" && error.phoneNumber1==="" && error.phoneNumber2===""){
+        if(error.email === "" && error.phoneNumber1 === "" && error.phoneNumber2 === ""){
         const id = location.state.id;
             fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/addAdmission/'+id,{
                 method:'POST',
@@ -159,7 +159,7 @@ function StudentForm(){
                             onChange={handleInput} className='form-control rounded-0 c1' autoComplete='off' /><br/>
                             <input type="email" id="emailId" placeholder='enter email Id' name='emailId' 
                             onChange={handleInput} className='form-control rounded-0 c1' autoComplete='off' /><br/>
-                            {error.emailId && <span className='text-danger'>{error.emailId}</span>}
+                            {error.email && <span className='text-danger'>{error.email}</span>}
                             <input type="number" id="age" placeholder='enter your age' name='age' 
                             onChange={handleInput} className='form-control rounded-0 c1' autoComplete='off' />
                         </div>

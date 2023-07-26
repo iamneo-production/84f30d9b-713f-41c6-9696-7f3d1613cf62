@@ -16,12 +16,12 @@ export default function studentVal(values) {
     } else if (!mobilenumber_pattern.test(values.phoneNumber1)) {
       error.phoneNumber1 = "Invalid Mobile Number format";
     } else {
-        error.mobileNumber="";
+        error.phoneNumber1="";
     }
 
-    if(values.phoneNumber2)
+    if(values.phoneNumber2!="")
     {
-        if(mobilenumber_pattern.test(values.phoneNumber2))
+        if(!mobilenumber_pattern.test(values.phoneNumber2))
         {
             error.phoneNumber2="Invalid Mobile Number format";
         }
