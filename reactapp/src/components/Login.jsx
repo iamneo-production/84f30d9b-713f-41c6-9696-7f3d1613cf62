@@ -27,7 +27,7 @@ function Login() {
         event.preventDefault();
         setError(LoginAuth(values));
         if(errors.email === '' && errors.password === '' ){
-            fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/login',{
+            fetch('https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/user/login',{
                 method:'POST',
                 headers:{
                     'Accept':'application/json',

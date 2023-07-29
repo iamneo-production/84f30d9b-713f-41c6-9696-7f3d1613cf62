@@ -29,7 +29,7 @@ function Editadmission(){
     const [error,setError]= useState('');
 
     useEffect(() => {
-        fetch(`https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/getAdmission/${id}`)
+        fetch(`https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/user/getAdmission/${id}`)
           .then((response) => response.json())
           .then((data) => {
             if (data.success) {
@@ -45,7 +45,7 @@ function Editadmission(){
 
     const handleLogout = () =>
     {
-        fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
+        fetch('https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
         {method: 'DELETE'})
         .then(res => res.json())
        .then(result => {alert(result.value)
@@ -78,7 +78,7 @@ function Editadmission(){
          }
         setError(studentVal(updatedStudent))
         if(error.email === "" && error.phoneNumber1 === "" && error.phoneNumber2 === ""){
-         fetch(`https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/editAdmission/${id}`, {
+         fetch(`https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/user/editAdmission/${id}`, {
            method: 'PUT',
            headers: {
              'Content-Type': 'application/json',

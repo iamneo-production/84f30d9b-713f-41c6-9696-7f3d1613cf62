@@ -11,7 +11,7 @@ function Adminstudent() {
 
   const handleLogout = () =>
     {
-        fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
+        fetch('https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
         {method: 'DELETE'})
         .then(res => res.json())
         .then(result => {alert(result.value)
@@ -20,7 +20,7 @@ function Adminstudent() {
     }
 
   useEffect(() => {
-    fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/admin/ViewStudent')
+    fetch('https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/admin/ViewStudent')
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
@@ -39,7 +39,7 @@ function Adminstudent() {
   }, []);
 
   const handleDelete = (studentId) => {
-    fetch(`https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/admin/deleteStudent/${studentId}`, {
+    fetch(`https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/admin/deleteStudent/${studentId}`, {
       method: 'DELETE',
     })
       .then((response) => response.json())
