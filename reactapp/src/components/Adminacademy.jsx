@@ -1,21 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaTrash, FaPencilAlt } from 'react-icons/fa';
+import { useAuthenticationAdmin } from './UseAuthentication';
 
 function Adminacademy() {
+
+  useAuthenticationAdmin();
   const [institutes, setInstitutes] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleLogout = () =>
     {
-        fetch('https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
+        fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
         {method: 'DELETE'})
         .then(res => res.json())
-        .then(result => alert(result.value))
+        .then(result => {alert(result.value)
+          localStorage.clear();            
+        })
     }
 
   useEffect(() => {
-    fetch('https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io//admin/viewInstitutes')
+    fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/admin/viewInstitutes')
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
@@ -30,7 +35,7 @@ function Adminacademy() {
   }, []);
 
   const handleDelete = (instituteId) => {
-    fetch(`https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/admin/deleteInstitute/${instituteId}`, {
+    fetch(`https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/admin/deleteInstitute/${instituteId}`, {
       method: 'DELETE',
     })
       .then((response) => response.json())

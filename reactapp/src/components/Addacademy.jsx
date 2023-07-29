@@ -3,11 +3,14 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useNavigate } from 'react-router-dom';
+import { useAuthenticationAdmin } from './UseAuthentication';
+import AcademyCourseVal from './Academyval';
 
  
 
 function Addacademy() {
 
+  useAuthenticationAdmin();
   const [instituteName, setAcademyName] = useState('');
 
   const [mobile, setContactNumber] = useState('');
@@ -20,6 +23,8 @@ function Addacademy() {
 
   const [instituteDescription, setAcademyDescription] = useState('');
 
+  const [error,setError]=useState('');
+
   const navigate=useNavigate();
 
  
@@ -28,14 +33,15 @@ function Addacademy() {
 
     {
 
-        fetch('https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io//user/logout',
+        fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
 
         {method: 'DELETE'})
 
         .then(res => res.json())
 
-        .then(result => alert(result.value))
-
+        .then(result => {alert(result.value)
+            localStorage.clear();            
+        })
     }
 
  
@@ -51,9 +57,6 @@ function Addacademy() {
       return;
 
     }
-
- 
-
     // Prepare data for the API req
 
     const data = {
@@ -73,10 +76,12 @@ function Addacademy() {
     };
 
    
+    setError(AcademyCourseVal({"email":email,"mobile":mobile}))
+    if(error.email === "" && error.mobile === "" ){
 
     // Send the data to the API
 
-    fetch('https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io//admin/addInstitute', {
+    fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/admin/addInstitute', {
 
       method: 'POST',
 
@@ -115,6 +120,7 @@ function Addacademy() {
         console.error(error);
 
       });
+    }
 
   };
 
@@ -261,6 +267,7 @@ function Addacademy() {
                 required
 
               />
+              {error.mobile && <span className='text-danger'>{error.mobile}</span>}
 
             </div>
 
@@ -313,7 +320,7 @@ function Addacademy() {
                 required
 
               />
-
+              {error.email && <span className='text-danger'>{error.email}</span>}
             </div>
 
           </div>

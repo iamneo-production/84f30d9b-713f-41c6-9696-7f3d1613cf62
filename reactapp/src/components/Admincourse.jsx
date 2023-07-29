@@ -4,8 +4,11 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { FaTrash, FaPencilAlt } from 'react-icons/fa';
+import { useAuthenticationAdmin } from './UseAuthentication';
 
 function Admincourse() {
+
+  useAuthenticationAdmin();
 
   const [courses, setCourses] = useState([]);
 
@@ -17,13 +20,15 @@ function Admincourse() {
 
     {
 
-        fetch('https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
+        fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
 
         {method: 'DELETE'})
 
         .then(res => res.json())
 
-        .then(result => alert(result.value))
+        .then(result => {alert(result.value)
+          localStorage.clear();            
+        })
 
     }
 
@@ -31,7 +36,7 @@ function Admincourse() {
 
   useEffect(() => {
 
-    fetch('https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/admin/viewCourse')
+    fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/admin/viewCourse')
 
       .then((response) => response.json())
 
@@ -61,7 +66,7 @@ function Admincourse() {
 
   const handleDelete = (courseId) => {
 
-    fetch(`https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/admin/deleteCourse/${courseId}`, {
+    fetch(`https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/admin/deleteCourse/${courseId}`, {
 
       method: 'DELETE',
 
@@ -244,7 +249,7 @@ function Admincourse() {
 
                         <label>Course Duration:</label>
 
-                        <span>{course.courseDuration}</span>
+                        <span>{course.courseDuration +" Months"}</span>
 
                       </div>
 

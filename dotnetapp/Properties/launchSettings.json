@@ -19,7 +19,7 @@
     },
     "dotnetapp": {
       "commandName": "Project",
-      "dotnetRunMessages": true,
+      "dotnetRunMessages": "true",
       "launchBrowser": true,
       "launchUrl": "swagger",
       "applicationUrl": "http://0.0.0.0:8080",

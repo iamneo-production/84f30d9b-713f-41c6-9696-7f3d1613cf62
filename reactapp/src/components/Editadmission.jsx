@@ -2,8 +2,11 @@ import React from 'react'
 import './userAcademy.css'
 import { Link, Outlet, useNavigate, useParams} from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import { useAuthenticationUser } from './UseAuthentication'
+import studentVal from './Validations'
 
 function Editadmission(){
+    useAuthenticationUser();
     const navigate=useNavigate();
     const { id } = useParams();
     const [student, setStudent] = useState({
@@ -23,9 +26,10 @@ function Editadmission(){
       pincode: 0,
       nationality: '',
     });
+    const [error,setError]= useState('');
 
     useEffect(() => {
-        fetch(`https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/user/getAdmission/${id}`)
+        fetch(`https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/getAdmission/${id}`)
           .then((response) => response.json())
           .then((data) => {
             if (data.success) {
@@ -41,10 +45,12 @@ function Editadmission(){
 
     const handleLogout = () =>
     {
-        fetch('https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
+        fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
         {method: 'DELETE'})
         .then(res => res.json())
-        .then(result => alert(result.value))
+       .then(result => {alert(result.value)
+        localStorage.clear();            
+})
     }
     const handleUpdate = () => {
         const updatedStudent = {
@@ -70,8 +76,9 @@ function Editadmission(){
            alert('Please fill in all the fields.');
            return;
          }
-       
-         fetch(`https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/user/editAdmission/${id}`, {
+        setError(studentVal(updatedStudent))
+        if(error.email === "" && error.phoneNumber1 === "" && error.phoneNumber2 === ""){
+         fetch(`https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/editAdmission/${id}`, {
            method: 'PUT',
            headers: {
              'Content-Type': 'application/json',
@@ -90,6 +97,7 @@ function Editadmission(){
            .catch((error) => {
              console.error('Error:', error);
            });
+        }
        };
 
     return(
@@ -162,6 +170,7 @@ function Editadmission(){
                                     ...prev,
                                     phoneNumber1: e.target.value,
                                 }))}/>
+                            {error.phoneNumber1 && <span className='text-danger'>{error.phoneNumber1}</span>}
                         </div>
                         <div class="col">
                             <input type="text" id="phoneNumber2" placeholder='enter alternate number' name='phoneNumber2' 
@@ -170,6 +179,7 @@ function Editadmission(){
                                     ...prev,
                                     phoneNumber2: e.target.value,
                                 }))}/>
+                            {error.phoneNumber2 && <span className='text-danger'>{error.phoneNumber2}</span>}
                         </div>
                     </div>
                     <br/>
@@ -187,6 +197,7 @@ function Editadmission(){
                                     ...prev,
                                     emailId: e.target.value,
                                 }))} readOnly/><br/>
+                            {error.email && <span className='text-danger'>{error.email}</span>}
                             <input type="number" id="age" placeholder='enter your age' name='age' 
                             value={student.age} className='form-control rounded-0 c1' autoComplete='off' onChange={(e) =>
                                 setStudent((prev) => ({

@@ -35,7 +35,7 @@ function Signup(){
         event.preventDefault();
         setError(SignupAuth(values));
         if(errors.email === "" && errors.password === "" && errors.username === ""  && errors.mobileNumber === "" && errors.userRole === ""){
-            fetch('https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/user/signup',{
+            fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/signup',{
                 method:'POST',
                 headers:{
                     'Accept':'application/json',

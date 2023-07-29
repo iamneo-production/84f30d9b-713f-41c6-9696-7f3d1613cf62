@@ -2,22 +2,26 @@ import React, { useState,useEffect } from 'react'
 import './userAcademy.css'
 import { Link, Outlet } from 'react-router-dom'
 import { FaTrash, FaPencilAlt } from 'react-icons/fa';
+import { useAuthenticationUser } from './UseAuthentication';
 
 function Enrolledcourse(){
 
+    useAuthenticationUser();
     const [admissionData,setAdmissionData] = useState([]);
     const [enroll,setEnroll] = useState(true);
     
     const handleLogout = () =>
     {
-        fetch('https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
+        fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
         {method: 'DELETE'})
         .then(res => res.json())
-        .then(result => alert(result.value))
+        .then(result => {alert(result.value)
+            localStorage.clear();            
+        })
     }
     useEffect(()=>
     {
-        fetch('https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/user/viewAdmission')
+        fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/viewAdmission')
         .then(response => response.json())
         .then((result) => 
         {
@@ -36,7 +40,7 @@ function Enrolledcourse(){
     }
     
     const handleDelete = (admissionId) => {
-        fetch(`https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/user/deleteAdmission/${admissionId}`,
+        fetch(`https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/deleteAdmission/${admissionId}`,
         {method: 'DELETE'})
         .then((response) => response.json())
         .then((data) => {
@@ -65,7 +69,7 @@ function Enrolledcourse(){
                             <Link class="nav-link" to="/institutes" id="userAcademy">Academy </Link>
                         </li>
                         <li class="nav-item">
-                            <Link class="nav-link" to="/enrolledcourses" id="userEnrolledCourse" style={{fontSize: '30px'}}>Enrolled Course</Link>
+                            <Link class="nav-link" to="/enrolledcourses" id="userEnrolledCourse" style={{fontSize: '25px'}}>Enrolled Course</Link>
                         </li>
                     </ul>
                     <ul class="navbar-nav mr-auto">

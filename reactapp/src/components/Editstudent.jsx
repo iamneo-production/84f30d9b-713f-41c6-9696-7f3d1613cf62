@@ -1,8 +1,11 @@
 import { Link, useParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuthenticationAdmin } from './UseAuthentication';
+import studentVal from './Validations';
 
 function Editstudent() {
+  useAuthenticationAdmin();
   const navigate=useNavigate();
   const { id } = useParams();
   const [student, setStudent] = useState({
@@ -22,17 +25,20 @@ function Editstudent() {
     pincode: '',
     nationality: '',
   });
+  const [error,setError]=useState('');
 
   const handleLogout = () =>
     {
-        fetch('https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
+        fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
         {method: 'DELETE'})
         .then(res => res.json())
-        .then(result => alert(result.value))
+        .then(result => {alert(result.value)
+          localStorage.clear();            
+        })
     }
 
   useEffect(() => {
-    fetch(`https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/admin/GetStudent/${id}`)
+    fetch(`https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/admin/GetStudent/${id}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
@@ -69,8 +75,9 @@ function Editstudent() {
       alert('Please fill in all the fields.');
       return;
     }
-  
-    fetch(`https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/admin/editStudent/${id}`, {
+    setError(studentVal(updatedStudent))
+    if(error.email === "" && error.phoneNumber1 === "" && error.phoneNumber2 === ""){
+    fetch(`https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/admin/editStudent/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -85,12 +92,13 @@ function Editstudent() {
       .catch((error) => {
         console.error('Error:', error);
       });
+    }
   };
   
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light fixed-top" id="userNavbar">
+      <nav className="navbar navbar-expand-lg navbar-dark fixed-top" id="userNavbar">
         <button
           className="navbar-toggler"
           type="button"
@@ -168,7 +176,7 @@ function Editstudent() {
                 ...prev,
                 gender: e.target.value,
               }))
-            } />
+            } readOnly />
               
             </div>
           </div>
@@ -197,7 +205,8 @@ function Editstudent() {
                   ...prev,
                   phoneNumber1: e.target.value,
                 }))
-              }/>
+              } readOnly/>
+              {error.phoneNumber1 && <span className='text-danger'>{error.phoneNumber1}</span>}
             </div>
           </div>
           <div className="col-md-4">
@@ -210,7 +219,8 @@ function Editstudent() {
                   ...prev,
                   phoneNumber2: e.target.value,
                 }))
-              }/>
+              } />
+              {error.phoneNumber2 && <span className='text-danger'>{error.phoneNumber2}</span>}
             </div>
           </div>
         </div>
@@ -236,7 +246,8 @@ function Editstudent() {
                   ...prev,
                   emailId: e.target.value,
                 }))
-              } />
+              } readOnly/>
+              {error.email && <span className='text-danger'>{error.email}</span>}
             </div>
           </div>
           <div className="col-md-4">

@@ -27,7 +27,7 @@ function Login() {
         event.preventDefault();
         setError(LoginAuth(values));
         if(errors.email === '' && errors.password === '' ){
-            fetch('https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/user/login',{
+            fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/login',{
                 method:'POST',
                 headers:{
                     'Accept':'application/json',
@@ -40,10 +40,19 @@ function Login() {
             })
             .then(res=>res.json())
             .then((result)=>{
-                if(result.s==="admin")
+                if(result.s==="admin"){
+                    localStorage.setItem('admin',values.email);
+                    localStorage.setItem('authenticatedUser',false);
+                    localStorage.setItem('authenticatedAdmin',true);
                     navigate('/Academy');
+                }
                 else if(result.s==="user")
+                {
+                    localStorage.setItem('user',values.email);
+                    localStorage.setItem('authenticatedUser',true);
+                    localStorage.setItem('authenticatedAdmin',false);
                     navigate("/institutes");
+                }
                 else if(result.s===false)
                     setInvalid("Invalid Username/Password");
             },(error)=>{

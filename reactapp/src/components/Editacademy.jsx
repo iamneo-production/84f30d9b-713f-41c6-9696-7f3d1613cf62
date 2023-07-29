@@ -4,13 +4,18 @@ import { Link, useParams } from 'react-router-dom';
 
 import { useNavigate } from 'react-router-dom';
 
+import { useAuthenticationAdmin } from './UseAuthentication';
+import AcademyCourseVal from './Academyval';
+
  
 
 function Editacademy() {
-
+  useAuthenticationAdmin();
   const { id } = useParams();
 
   const [institute, setInstitute] = useState(null);
+
+  const [error,setError]= useState('');
 
   const navigate = useNavigate();
 
@@ -20,13 +25,15 @@ function Editacademy() {
 
     {
 
-        fetch('https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
+        fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
 
         {method: 'DELETE'})
 
         .then(res => res.json())
 
-        .then(result => alert(result.value))
+        .then(result => {alert(result.value)
+          localStorage.clear();            
+        })
 
     }
 
@@ -34,7 +41,7 @@ function Editacademy() {
 
     useEffect(() => {
 
-    fetch(`https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/admin/GetInstitute/${id}`)
+    fetch(`https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/admin/GetInstitute/${id}`)
 
       .then((response) => response.json())
 
@@ -94,9 +101,11 @@ function Editacademy() {
 
     }
 
- 
-
-    fetch(`https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/admin/editInstitute/${id}`, {
+ console.log(institute.email);
+    setError(AcademyCourseVal({"email":institute.email,"mobile":institute.mobile}))
+    console.log(error);
+    if(error.email==="" && error.mobile===""){
+    fetch(`https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/admin/editInstitute/${id}`, {
 
       method: 'PUT',
 
@@ -125,6 +134,7 @@ function Editacademy() {
         console.error('Error:', error);
 
       });
+    }
 
   };
 
@@ -299,6 +309,7 @@ function Editacademy() {
                 }
 
               />
+              {error.mobile && <span className='text-danger'>{error.mobile}</span>}
 
             </div>
 
@@ -367,6 +378,8 @@ function Editacademy() {
                 }
 
               />
+               {error.email && <span className='text-danger'>{error.email}</span>}
+              {/* {error.email && <span className='text-danger'>{error.email}</span>} */}
 
             </div>
 

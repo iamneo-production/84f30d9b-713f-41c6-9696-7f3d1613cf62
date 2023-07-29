@@ -9,6 +9,7 @@
   
   #loginButton {
     background-color: #3F5F73;
+    width: auto;
   }
   
   #email {
@@ -19,12 +20,12 @@
   #password {
     width: 100%;
   }
-  #loginButton {
-    width: auto;
-  }
+  
   #singupLink {
     width: auto;
   }
   .loginPage{
     background-color: #d8c1c8;
   }
+ 
+  

@@ -3,11 +3,13 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useNavigate } from 'react-router-dom';
+import { useAuthenticationAdmin } from './UseAuthentication';
 
  
 
 function Addcourse() {
 
+  useAuthenticationAdmin();
   const [courseName, setCourseName] = useState('');
 
   const [courseDuration, setCourseDuration] = useState('');
@@ -30,13 +32,15 @@ function Addcourse() {
 
   {
 
-      fetch('https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
+      fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
 
       {method: 'DELETE'})
 
       .then(res => res.json())
 
-      .then(result => alert(result.value))
+        .then(result => {alert(result.value)
+            localStorage.clear();            
+        })
 
   }
 
@@ -76,7 +80,7 @@ function Addcourse() {
 
    
 
-    fetch('https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/admin/addCourse', {
+    fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/admin/addCourse', {
 
       method: 'POST',
 
@@ -450,7 +454,7 @@ function Addcourse() {
 
                 position: fixed;
 
-                bottom: 140px;
+                bottom: 100px;
 
                 right: 125px;
 

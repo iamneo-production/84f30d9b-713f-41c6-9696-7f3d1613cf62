@@ -2,18 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { Link, Outlet, useLocation} from 'react-router-dom';
 import { Button, Col, Form } from "react-bootstrap";
 import './userAcademy.css'
+import { useAuthenticationUser } from './UseAuthentication';
 
 function Courses() {
+  useAuthenticationUser();
   const [courses, setCourses] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [login, setLogin] = useState(false);
   const location=useLocation();
   const handleLogout = () =>
   {
-    fetch('https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
+    fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
     {method: 'DELETE'})
     .then(res => res.json())
-    .then(result => alert(result.value))
+    .then(result => {alert(result.value)
+      localStorage.clear();            
+    })
   }
 
     const handleSearch = (event) => {
@@ -30,7 +34,7 @@ function Courses() {
 
   useEffect(() => {
     const id=location.state.id;
-    fetch('https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/user/viewStatus?id='+id)
+    fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/viewStatus?id='+id)
       .then((response) => response.json())
       .then((data) => {
           setCourses(data.value);
@@ -47,7 +51,7 @@ function Courses() {
   return (
     <div>
       <nav class="navbar navbar-expand-lg navbar-light" id="userNavbar">
-                <Link class="navbar-brand" to='/institutes'>Abacus academy</Link>
+                <span class="navbar-brand" >Abacus academy</span>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -55,7 +59,7 @@ function Courses() {
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item active">
-                            <Link class="nav-link" to="/institutes" id="userAcademy" style={{fontSize: '30px'}}>Academy </Link>
+                            <Link class="nav-link" to="/institutes" id="userAcademy" style={{fontSize: '25px'}}>Academy </Link>
                         </li>
                         <li class="nav-item">
                             <Link class="nav-link" to="/enrolledcourses" id="userEnrolledCourse">Enrolled Course</Link>

@@ -4,10 +4,10 @@ import { useNavigate } from 'react-router-dom';
 
 import React, { useEffect, useState } from 'react';
 
- 
+import { useAuthenticationAdmin } from './UseAuthentication';
 
 function Editcourse() {
-
+  useAuthenticationAdmin();
   const { id } = useParams();
 
   const [course, setCourse] = useState(null);
@@ -20,13 +20,15 @@ function Editcourse() {
 
     {
 
-        fetch('https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
+        fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
 
         {method: 'DELETE'})
 
         .then(res => res.json())
 
-        .then(result => alert(result.value))
+        .then(result => {alert(result.value)
+          localStorage.clear();            
+        })
 
     }
 
@@ -34,7 +36,7 @@ function Editcourse() {
 
   useEffect(() => {
 
-    fetch(`https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/admin/GetCourse/${id}`)
+    fetch(`https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/admin/GetCourse/${id}`)
 
       .then((response) => response.json())
 
@@ -94,7 +96,7 @@ function Editcourse() {
 
  
 
-    fetch(`https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/admin/editCourse/${id}`, {
+    fetch(`https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/admin/editCourse/${id}`, {
 
       method: 'PUT',
 
@@ -524,7 +526,7 @@ function Editcourse() {
 
                 position: fixed;
 
-                bottom: 140px;
+                bottom: 100px;
 
                 right: 125px;
 

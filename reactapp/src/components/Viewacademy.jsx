@@ -3,23 +3,28 @@ import './userAcademy.css'
 import { useState, useEffect } from 'react';
 import { Link, Outlet } from 'react-router-dom'
 import { Col, Button, Form} from "react-bootstrap";
+import { useAuthenticationUser } from './UseAuthentication';
   
 function Viewacademy(){
+    useAuthenticationUser();
     const [academydata,setAcademyData]=useState([]);
     const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(() => {
-        fetch('https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/user/viewInstitutes')
+        fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/viewInstitutes')
+       
         .then(res=>res.json())
         .then(data=>setAcademyData(data.value));
     },[]);
 
     const handleLogout = () =>
     {
-        fetch('https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
+        fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
         {method: 'DELETE'})
         .then(res => res.json())
-        .then(result => alert(result.value))
+        .then(result => {alert(result.value)
+            localStorage.clear();            
+        })
     }
 
     const handleSearch = (event) => {
@@ -47,7 +52,7 @@ function Viewacademy(){
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item active">
-                            <Link class="nav-link" to="/institutes" id="userAcademy" style={{fontSize: '30px'}}>Academy </Link>
+                            <Link class="nav-link" to="/institutes" id="userAcademy" style={{fontSize: '25px'}}>Academy </Link>
                         </li>
                         <li class="nav-item">
                             <Link class="nav-link" to="/enrolledcourses" id="userEnrolledCourse">Enrolled Course</Link>
