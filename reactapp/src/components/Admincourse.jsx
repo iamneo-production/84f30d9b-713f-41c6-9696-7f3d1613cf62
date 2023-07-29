@@ -249,7 +249,7 @@ function Admincourse() {
 
                         <label>Course Duration:</label>
 
-                        <span>{course.courseDuration}</span>
+                        <span>{course.courseDuration +" Months"}</span>
 
                       </div>
 

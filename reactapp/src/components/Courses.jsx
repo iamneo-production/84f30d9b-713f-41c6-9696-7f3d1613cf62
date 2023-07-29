@@ -51,7 +51,7 @@ function Courses() {
   return (
     <div>
       <nav class="navbar navbar-expand-lg navbar-light" id="userNavbar">
-                <Link class="navbar-brand" to='/institutes'>Abacus academy</Link>
+                <span class="navbar-brand" >Abacus academy</span>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -59,7 +59,7 @@ function Courses() {
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item active">
-                            <Link class="nav-link" to="/institutes" id="userAcademy" style={{fontSize: '30px'}}>Academy </Link>
+                            <Link class="nav-link" to="/institutes" id="userAcademy" style={{fontSize: '25px'}}>Academy </Link>
                         </li>
                         <li class="nav-item">
                             <Link class="nav-link" to="/enrolledcourses" id="userEnrolledCourse">Enrolled Course</Link>

@@ -98,7 +98,7 @@ function Editstudent() {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light fixed-top" id="userNavbar">
+      <nav className="navbar navbar-expand-lg navbar-dark fixed-top" id="userNavbar">
         <button
           className="navbar-toggler"
           type="button"
@@ -176,7 +176,7 @@ function Editstudent() {
                 ...prev,
                 gender: e.target.value,
               }))
-            } />
+            } readOnly />
               
             </div>
           </div>
@@ -205,7 +205,7 @@ function Editstudent() {
                   ...prev,
                   phoneNumber1: e.target.value,
                 }))
-              }/>
+              } readOnly/>
               {error.phoneNumber1 && <span className='text-danger'>{error.phoneNumber1}</span>}
             </div>
           </div>
@@ -219,7 +219,7 @@ function Editstudent() {
                   ...prev,
                   phoneNumber2: e.target.value,
                 }))
-              }/>
+              } />
               {error.phoneNumber2 && <span className='text-danger'>{error.phoneNumber2}</span>}
             </div>
           </div>
@@ -246,7 +246,7 @@ function Editstudent() {
                   ...prev,
                   emailId: e.target.value,
                 }))
-              } />
+              } readOnly/>
               {error.email && <span className='text-danger'>{error.email}</span>}
             </div>
           </div>

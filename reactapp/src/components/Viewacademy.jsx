@@ -12,6 +12,7 @@ function Viewacademy(){
 
     useEffect(() => {
         fetch('https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/user/viewInstitutes')
+       
         .then(res=>res.json())
         .then(data=>setAcademyData(data.value));
     },[]);
@@ -51,7 +52,7 @@ function Viewacademy(){
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item active">
-                            <Link class="nav-link" to="/institutes" id="userAcademy" style={{fontSize: '30px'}}>Academy </Link>
+                            <Link class="nav-link" to="/institutes" id="userAcademy" style={{fontSize: '25px'}}>Academy </Link>
                         </li>
                         <li class="nav-item">
                             <Link class="nav-link" to="/enrolledcourses" id="userEnrolledCourse">Enrolled Course</Link>

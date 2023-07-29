@@ -69,7 +69,7 @@ function Enrolledcourse(){
                             <Link class="nav-link" to="/institutes" id="userAcademy">Academy </Link>
                         </li>
                         <li class="nav-item">
-                            <Link class="nav-link" to="/enrolledcourses" id="userEnrolledCourse" style={{fontSize: '30px'}}>Enrolled Course</Link>
+                            <Link class="nav-link" to="/enrolledcourses" id="userEnrolledCourse" style={{fontSize: '25px'}}>Enrolled Course</Link>
                         </li>
                     </ul>
                     <ul class="navbar-nav mr-auto">

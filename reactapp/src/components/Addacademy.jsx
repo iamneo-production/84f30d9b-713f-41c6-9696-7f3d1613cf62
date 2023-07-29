@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { useNavigate } from 'react-router-dom';
 import { useAuthenticationAdmin } from './UseAuthentication';
-import AcademyCourseVal from './Validations';
+import AcademyCourseVal from './Academyval';
 
  
 

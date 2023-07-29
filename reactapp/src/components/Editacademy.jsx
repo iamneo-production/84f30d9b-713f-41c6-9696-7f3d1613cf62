@@ -5,7 +5,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 import { useAuthenticationAdmin } from './UseAuthentication';
-import AcademyCourseVal from './Validations';
+import AcademyCourseVal from './Academyval';
 
  
 
@@ -101,8 +101,9 @@ function Editacademy() {
 
     }
 
- 
-    setError(AcademyCourseVal(updatedInstitute))
+ console.log(institute.email);
+    setError(AcademyCourseVal({"email":institute.email,"mobile":institute.mobile}))
+    console.log(error);
     if(error.email==="" && error.mobile===""){
     fetch(`https://8080-ffbaaaeececadacafaabfdabddffdbddfadbecbaeee.project.examly.io/admin/editInstitute/${id}`, {
 
@@ -377,7 +378,8 @@ function Editacademy() {
                 }
 
               />
-              {error.email && <span className='text-danger'>{error.email}</span>}
+               {error.email && <span className='text-danger'>{error.email}</span>}
+              {/* {error.email && <span className='text-danger'>{error.email}</span>} */}
 
             </div>
 

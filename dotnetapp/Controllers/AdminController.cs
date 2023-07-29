@@ -537,6 +537,10 @@ namespace dotnetapp.Controllers
                 {
                     return NotFound("Course not found");
                 }
+                SqlCommand c=new SqlCommand("DELETE FROM Admission WHERE courseId=@Id",connection);
+                c.Parameters.AddWithValue("@Id",id);
+                int r = c.ExecuteNonQuery();
+                
             }
 
             return Ok(new { success = true, message = "Course deleted" });

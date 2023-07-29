@@ -6,7 +6,7 @@ body{
 }
 
 .navbar-brand{
-    font-size: 40px;
+    font-size: 25px;
     color: white;
 }
 #userAcademy{
@@ -56,4 +56,8 @@ body{
 .enroll-course label{
     font-weight: bold;
     margin-right: 5px;
+}
+.navbar-brand:hover{
+    color:rgb(255, 255, 255);
+
 }
