@@ -7,100 +7,100 @@ import studentVal from './Validations'
 
 function Editadmission(){
     useAuthenticationUser();
-    const navigate=useNavigate();
-    const { id } = useParams();
-    const [student, setStudent] = useState({
-      firstName: '',
-      lastName: '',
-      gender: '',
-      fatherName: '',
-      motherName: '',
-      emailId: '',
-      phoneNumber1: '',
-      phoneNumber2: '',
-      age: 0,
-      houseNo: '',
-      streetName: '',
-      areaName: '',
-      state: '',
-      pincode: 0,
-      nationality: '',
-    });
+ const navigate=useNavigate();
+ const { id } = useParams();
+ const [student, setStudent] = useState({
+   firstName: '',
+   lastName: '',
+   gender: '',
+   fatherName: '',
+   motherName: '',
+   emailId: '',
+   phoneNumber1: '',
+   phoneNumber2: '',
+   age: 0,
+   houseNo: '',
+   streetName: '',
+   areaName: '',
+   state: '',
+   pincode: 0,
+   nationality: '',
+ });
     const [error,setError]= useState('');
 
-    useEffect(() => {
-        fetch(`https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/user/getAdmission/${id}`)
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.success) {
-              setStudent(data.student);
-            } else {
-              console.error(data.message);
-            }
-          })
-          .catch((error) => {
-            console.error('Error:', error);
-          });
-      }, [id]);
+ useEffect(() => {
+  fetch(`https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/user/getAdmission/${id}`)
+    .then((response) => response.json())
+    .then((data) => {
+   if (data.success) {
+     setStudent(data.student);
+   } else {
+     console.error(data.message);
+   }
+    })
+    .catch((error) => {
+   console.error('Error:', error);
+   });
+  }, [id]);
 
-    const handleLogout = () =>
-    {
-        fetch('https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
-        {method: 'DELETE'})
-        .then(res => res.json())
-       .then(result => {alert(result.value)
+ const handleLogout = () =>
+ {
+  fetch('https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/user/logout',
+  {method: 'DELETE'})
+  .then(res => res.json())
+ .then(result => {alert(result.value)
         localStorage.clear();            
 })
-    }
-    const handleUpdate = () => {
-        const updatedStudent = {
-           firstName: student.firstName,
-           phoneNumber1: student.phoneNumber1,
-           lastName: student.lastName,
-           gender: student.gender,
-           fatherName: student.fatherName,
-           motherName: student.motherName,
-           emailId: student.emailId,
-           phoneNumber2: student.phoneNumber2,
-           age: student.age,
-           houseNo: student.houseNo,
-           streetName: student.streetName,
-           areaName: student.areaName,
-           state: student.state,
-           pincode: student.pincode,
-           nationality: student.nationality,
-         };
-         console.log(updatedStudent);
-         const isFormValid = Object.values(updatedStudent).every((value) => value.toString().trim() !== '');
-         if (!isFormValid) {
-           alert('Please fill in all the fields.');
-           return;
-         }
+ }
+ const handleUpdate = () => {
+  const updatedStudent = {
+  firstName: student.firstName,
+  phoneNumber1: student.phoneNumber1,
+  lastName: student.lastName,
+  gender: student.gender,
+  fatherName: student.fatherName,
+  motherName: student.motherName,
+  emailId: student.emailId,
+  phoneNumber2: student.phoneNumber2,
+  age: student.age,
+  houseNo: student.houseNo,
+  streetName: student.streetName,
+  areaName: student.areaName,
+  state: student.state,
+  pincode: student.pincode,
+  nationality: student.nationality,
+  };
+   console.log(updatedStudent);
+   const isFormValid = Object.values(updatedStudent).every((value) => value.toString().trim() !== '');
+   if (!isFormValid) {
+  alert('Please fill in all the fields.');
+  return;
+   }
         setError(studentVal(updatedStudent))
         if(error.email === "" && error.phoneNumber1 === "" && error.phoneNumber2 === ""){
-         fetch(`https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/user/editAdmission/${id}`, {
-           method: 'PUT',
-           headers: {
-             'Content-Type': 'application/json',
-           },
-           body: JSON.stringify(updatedStudent),
-         })
-           .then((response) => response.json())
-           .then((data) => { if(data.success){
-             alert('Details updated successfully:', data);
-             navigate('/enrolledcourses');
-           }
-           else{
-            alert(data.message);
-           }
-           })
-           .catch((error) => {
-             console.error('Error:', error);
-           });
+  fetch(`https://8080-afbdefccfffbcabfdabddffdbddfadbecbaeee.project.examly.io/user/editAdmission/${id}`, {
+  method: 'PUT',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(updatedStudent),
+   })
+  .then((response) => response.json())
+  .then((data) => { if(data.success){
+    alert('Details updated successfully:', data);
+    navigate('/enrolledcourses');
+  }
+  else{
+   alert(data.message);
+  }
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
         }
-       };
+ };
 
-    return(
+ return(
         <div>
             <nav class="navbar navbar-expand-lg navbar-light" id="userNavbar">
                 <Link class="navbar-brand" to='/institutes'>Abacus academy</Link>
@@ -121,7 +121,7 @@ function Editadmission(){
                         <li class="nav-item">
                             <Link to="/" class="nav-link" id='logout' onClick={handleLogout}>Logout</Link>
                         </li>
-                    </ul>    
+                    </ul> 
                 </div>
                 <Outlet />
             </nav>

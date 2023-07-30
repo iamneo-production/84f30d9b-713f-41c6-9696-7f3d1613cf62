@@ -76,7 +76,7 @@ function Enrolledcourse(){
                         <li class="nav-item">
                             <Link to="/" class="nav-link" id='logout' onClick={handleLogout}>Logout</Link>
                         </li>
-                    </ul>    
+                    </ul> 
                 </div>
                 <Outlet />
             </nav>
